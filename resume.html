@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume | Dani Berman</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
+
 <body>
   <header>
-    <h1><a href="index.html">Dani Berman</a></h1>
+    <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="reel.html">Reel</a>
+      <a href="about.html">About</a>
+      <a href="resume.html" class="active">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-  <main>
-    <h2>Resume</h2>
-    <p><a href="resume.pdf" download class="btn">Download Resume (PDF)</a></p>
-    <div class="pdf-container">
-      <iframe src="resume.pdf" width="100%" height="800px">
-        <p>Your browser does not support PDFs. <a href="resume.pdf">Download the PDF</a>.</p>
-      </iframe>
+
+  <main class="content resume-page">
+    <div class="resume-header">
+      <h2>Resume</h2>
+      <a href="dani-berman.pdf" download="dani-berman.pdf" class="btn btn-small">Download PDF</a>
+    </div>
+
+    <div class="pdf-container-wrapper">
+      <div class="pdf-container">
+        <iframe src="dani-berman.pdf" width="100%" height="1100px">
+          <p>Your browser does not support PDFs. <a href="dani-berman.pdf">Download the PDF</a>.</p>
+        </iframe>
+      </div>
     </div>
   </main>
+
+  <footer>
+    <p>© 2025 Dani Berman</p>
+  </footer>
 </body>
 </html>

@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reel | Dani Berman</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
+
 <body>
   <header>
-    <h1><a href="index.html">Dani Berman</a></h1>
+    <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="reel.html" class="active">Reel</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
-  <main>
+
+  <main class="content">
     <h2>Reel</h2>
+  </main>
+
+  <div class="video-container-wrapper">
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
       </iframe>
     </div>
-  </main>
+  </div>
+
+  <footer>
+    <p>© 2025 Dani Berman</p>
+  </footer>
 </body>
 </html>
