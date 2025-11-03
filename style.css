@@ -54,37 +54,81 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ffd6b3, #cce5ff);
+  background: linear-gradient(135deg, #ffd6b3 0%, #ffedd6 50%, #cce5ff 100%);
   text-align: center;
   padding: 6rem 2rem;
+  min-height: 500px;
+}
+
+.hero-text {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-text h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.hero-text p {
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #3a3a3a;
+}
+
+.hero-description {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #4a4a4a;
+  font-weight: 400;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
-  background: #2e2e2e;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 5px;
+  padding: 0.85rem 1.5rem;
+  border-radius: 6px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-block;
 }
 
-.btn:hover {
+.btn-primary {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+.btn-primary:hover {
   background: #d9875b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 135, 91, 0.3);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #2e2e2e;
+  border: 2px solid #2e2e2e;
+}
+
+.btn-secondary:hover {
+  background: #2e2e2e;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 46, 46, 0.2);
 }
 
 .btn-small {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.95rem;
 }
 
 /* ===== Content ===== */
@@ -112,17 +156,151 @@ nav a.active {
   color: #4a4a4a;
 }
 
-/* ===== Resume Page Layout ===== */
+/* ===== Quote Feature Section ===== */
+.quote-feature {
+  background: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.quote-feature blockquote {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-feature blockquote p {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #2e2e2e;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.quote-feature blockquote cite {
+  font-size: 1.1rem;
+  color: #d9875b;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ===== Dual Skills Section ===== */
+.dual-skills {
+  background: linear-gradient(to bottom, #fffaf9 0%, #fff5f0 100%);
+  padding: 4rem 2rem;
+}
+
+.dual-skills .content {
+  margin: 0 auto;
+}
+
+.dual-skills h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #2e2e2e;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #d9875b;
+  font-weight: 600;
+}
+
+.skill-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+}
+
+.skill-card .btn {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+.skill-card .btn:hover {
+  background: #d9875b;
+}
+
+/* ===== Resume Page Layout - Fullscreen ===== */
+.resume-page-fullscreen {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px); /* Full viewport height minus header */
+  background-color: #fffaf9;
+  overflow: hidden;
+}
+
+/* Compact Header with Download Button */
+.resume-header-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #ffd6b3 0%, #ffedd6 50%, #cce5ff 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.resume-header-compact h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #2e2e2e;
+  font-weight: 600;
+}
+
+/* PDF Fullscreen Container */
+.pdf-fullscreen-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.pdf-fullscreen-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+/* Legacy Resume Page Layout (kept for compatibility) */
 .resume-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 3rem 1rem;
   background-color: #fffaf9;
-  max-width: none;  /* Override the .content max-width constraint */
+  max-width: none;
 }
 
-/* Title and Button */
 .resume-header {
   display: flex;
   flex-direction: column;
@@ -188,7 +366,7 @@ nav a.active {
 
 .pdf-container {
   width: 85%;
-  max-width: 950px;
+  max-width: none;
   background: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -198,7 +376,7 @@ nav a.active {
 .pdf-container iframe {
   border: none;
   width: 100%;
-  height: 1100px;
+  height: 1300px;
   display: block;
 }
 
@@ -267,6 +445,41 @@ footer {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .quote-feature blockquote p {
+    font-size: 1.2rem;
+  }
+
+  .dual-skills h2 {
+    font-size: 1.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .pdf-container {
     width: 95%;
   }
@@ -277,6 +490,26 @@ footer {
 
   .resume-header {
     margin-bottom: 1.5rem;
+  }
+
+  /* Fullscreen Resume - Mobile */
+  .resume-header-compact {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+
+  .resume-header-compact h2 {
+    font-size: 1.5rem;
+  }
+
+  .pdf-fullscreen-container {
+    padding: 1rem;
+  }
+
+  .resume-page-fullscreen {
+    height: calc(100vh - 120px); /* Adjust for taller mobile header */
   }
 
   form {
