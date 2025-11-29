@@ -54,7 +54,8 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('Media/dani-banner.jpg') center center / cover no-repeat;
+  background: url('Media/dani-banner.jpg') center center no-repeat;
+  background-size: 120%;
   text-align: center;
   padding: 4rem 2rem;
   min-height: 400px;
