@@ -54,15 +54,30 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ffd6b3 0%, #ffedd6 50%, #cce5ff 100%);
+  background: url('Media/dani-banner.jpg') center center / cover no-repeat;
   text-align: center;
-  padding: 6rem 2rem;
-  min-height: 500px;
+  padding: 4rem 2rem;
+  min-height: 400px;
+  max-height: 450px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .hero-text {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text h2 {
@@ -70,20 +85,24 @@ nav a.active {
   margin-bottom: 1rem;
   font-weight: 600;
   line-height: 1.2;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 1.3rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  color: #3a3a3a;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #4a4a4a;
+  color: #fff;
   font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cta-group {
@@ -246,6 +265,62 @@ nav a.active {
   background: #d9875b;
 }
 
+/* ===== Artist Statement Section ===== */
+.artist-statement {
+  background: #fff;
+  padding: 4rem 2rem;
+}
+
+.statement-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.artist-statement h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: #2e2e2e;
+}
+
+.statement-row {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.statement-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.statement-text {
+  flex: 1;
+}
+
+.statement-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+  text-align: left;
+}
+
+.statement-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statement-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
 /* ===== Resume Page Layout - Fullscreen ===== */
 .resume-page-fullscreen {
   display: flex;
@@ -398,7 +473,101 @@ nav a.active {
   background-color: #d9875b;
 }
 
-/* ===== Video Container ===== */
+/* ===== Gallery Page ===== */
+.gallery-page {
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-page h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: #2e2e2e;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-credit {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+}
+
+.videos-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 4rem 0 2rem;
+  color: #2e2e2e;
+}
+
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.video-item .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.video-item .video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.video-credit {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+/* ===== Legacy Video Container (for backwards compatibility) ===== */
 .video-container-wrapper {
   flex: 1;
   max-width: 1200px;
@@ -406,7 +575,7 @@ nav a.active {
   padding: 0 2rem;
 }
 
-.video-container {
+.video-container-wrapper .video-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
@@ -417,7 +586,7 @@ nav a.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.video-container iframe {
+.video-container-wrapper .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -547,6 +716,36 @@ footer {
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .artist-statement h2 {
+    font-size: 1.8rem;
+  }
+
+  .statement-row,
+  .statement-row-reverse {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .statement-image img {
+    max-width: 100%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .video-gallery {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .videos-heading {
+    font-size: 1.5rem;
+    margin: 3rem 0 1.5rem;
   }
 
   .pdf-container {
