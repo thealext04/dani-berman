@@ -12,7 +12,13 @@
     <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="gallery.html" class="active">Gallery</a>
+      <div class="dropdown">
+        <a href="gallery.html" class="active">Gallery</a>
+        <div class="dropdown-content">
+          <a href="gallery.html#photos">Photos</a>
+          <a href="gallery.html#videos">Videos</a>
+        </div>
+      </div>
       <a href="about.html">About</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
@@ -28,8 +34,11 @@
       <a href="#videos" class="btn btn-secondary">View Videos</a>
     </div>
 
+    <!-- Photos Section -->
+    <h3 class="videos-heading" id="photos">Photos</h3>
+
     <!-- Photos by @jaqlinmedlockphotography -->
-    <div class="gallery-grid" id="photos">
+    <div class="gallery-grid">
       <div class="gallery-item">
         <img src="Media/1.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
