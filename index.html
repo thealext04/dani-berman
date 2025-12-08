@@ -5,6 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dani Berman | Dancer & Choreographer</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Scroll Reveal Animation - Slide from Bottom */
+    .reveal {
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('Media/dani-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      margin-top: -80px;
+      padding-top: 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,13 +56,20 @@
         <a href="gallery.html">Gallery</a>
         <div class="dropdown-content">
           <a href="gallery.html#photos">Photos</a>
-          <a href="gallery.html#performances">Performances</a>
+          <a href="gallery.html#class-videos">Class Videos</a>
           <a href="gallery.html#choreography">Choreography</a>
         </div>
       </div>
       <a href="about.html">About</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
     </nav>
   </header>
 
@@ -51,12 +98,12 @@
       <div class="skills-grid">
         <div class="skill-card">
           <h3>Performance</h3>
-          <p>Regional theater productions across the US, with experience in commercial and jazz dance. Bringing authentic, emotive storytelling to every role — from high-energy ensemble work to character-driven solos.</p>
-          <a href="gallery.html#performances" class="btn btn-small">View Performances</a>
+          <p>Having a strong background in both commercial and theater jazz dance techniques, Dani strives to perform in theater and dance companies around the world. She brings authentic, emotive storytelling to every role — from high-energy ensemble work to character-driven solos.</p>
+          <a href="gallery.html#class-videos" class="btn btn-small">View Class Videos</a>
         </div>
         <div class="skill-card">
           <h3>Choreography</h3>
-          <p>Creating movement that connects deeply with music and narrative. Specializing in theatrical choreography that blends technical precision with emotional authenticity.</p>
+          <p>Dani creates movement that connects deeply with music and narrative. She is an artist who tells a story through dance and brings her own unique phenomenological embodiment to anything she crafts. Dani's specialty in choreography lies in emotive, assertive movement that blends technical precision with emotional authenticity.</p>
           <a href="gallery.html#choreography" class="btn btn-small">View Choreography</a>
         </div>
       </div>
@@ -67,9 +114,9 @@
     <div class="statement-container">
       <!-- h2 moved into the text column below -->
 
-      <div class="statement-row">
+      <div class="statement-row reveal">
         <div class="statement-text">
-          <h2>Artist Statement</h2>
+          <h2>A Note From the Artist</h2>
 
           <p>I am a dance artist who creates work on the basis of how the body naturally moves. I like to incorporate everyday gestures into my work, exhibiting aspects of strength and emotionality. My work tends to live in a space of human emotion at its core, coming from personal experience meshed with theatrical features. Being a creative who struggles with emotional regulation, I have unique experiences surrounding the intensity of how I feel, which I incorporate into my work. More mundane feelings become physicalized and exaggerated in an attempt to make the audience feel more, and potentially make them uncomfortable. I use movement to explore and attempt to understand topics of trauma, abuse, mental illness, sexuality, joy, and peace.</p>
 
@@ -80,7 +127,7 @@
         </div>
       </div>
 
-      <div class="statement-row">
+      <div class="statement-row reveal">
         <div class="statement-image">
           <img src="Media/27.jpeg" alt="Dani Berman performing" />
         </div>
@@ -97,15 +144,146 @@
     </div>
   </section>
 
+  <section class="footer-contact">
+    <div class="footer-contact-container">
+      <h3>Get In Touch</h3>
+      <form class="footer-contact-form" id="footerContactForm">
+        <div class="footer-form-row">
+          <input type="text" name="name" placeholder="Name *" required />
+          <input type="email" name="email" placeholder="Email *" required />
+        </div>
+        <textarea name="message" placeholder="Message *" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div id="footerStatusMessage" class="footer-message"></div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Dani Berman</p>
-    <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-    </a>
+    <div class="footer-left">
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <div class="typing-container-footer">
+        <p><span class="typing-static">I'm a&nbsp;</span><span class="typing-word-container"><span class="typed-text-footer"></span><span class="cursor-footer">&nbsp;</span></span></p>
+      </div>
+      <p>© 2025 Dani Berman</p>
+    </div>
   </footer>
+
+  <script>
+    const footerForm = document.getElementById('footerContactForm');
+    const footerStatusMessage = document.getElementById('footerStatusMessage');
+
+    if (footerForm) {
+      footerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+          name: footerForm.elements.name.value,
+          email: footerForm.elements.email.value,
+          message: footerForm.elements.message.value
+        };
+
+        const submitBtn = footerForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        footerStatusMessage.className = 'footer-message';
+        footerStatusMessage.style.display = 'none';
+
+        try {
+          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            footerStatusMessage.className = 'footer-message success';
+            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+            footerStatusMessage.style.display = 'block';
+            footerForm.reset();
+          } else {
+            footerStatusMessage.className = 'footer-message error';
+            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
+            footerStatusMessage.style.display = 'block';
+          }
+        } catch (error) {
+          footerStatusMessage.className = 'footer-message error';
+          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
+          footerStatusMessage.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    }
+
+    // Scroll Reveal Animation using Intersection Observer
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    reveals.forEach(reveal => {
+      revealOnScroll.observe(reveal);
+    });
+
+    // Footer Typing Effect
+    const typedTextSpan = document.querySelector('.typed-text-footer');
+    const cursor = document.querySelector('.cursor-footer');
+
+    const words = ['choreographer', 'performer', 'professional'];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newWordDelay = 2000;
+    let wordIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < words[wordIndex].length) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        setTimeout(erase, newWordDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        wordIndex++;
+        if (wordIndex >= words.length) wordIndex = 0;
+        setTimeout(type, typingDelay + 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(type, newWordDelay);
+    });
+  </script>
 </body>
 </html>

@@ -5,6 +5,241 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | Dani Berman</title>
   <link rel="stylesheet" href="style.css?v=3" />
+  <style>
+    /* Lightbox Styles */
+    .gallery-item {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item img {
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      z-index: 2001;
+      transition: color 0.3s ease;
+    }
+
+    .close-lightbox:hover {
+      color: #ccc;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+      user-select: none;
+      transition: background 0.3s ease;
+      z-index: 2001;
+    }
+
+    .lightbox-arrow:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-arrow.left {
+      left: 2rem;
+    }
+
+    .lightbox-arrow.right {
+      right: 2rem;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      text-align: center;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-caption {
+      color: white;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .close-lightbox {
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2.5rem;
+      }
+
+      .lightbox-arrow {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .lightbox-arrow.left {
+        left: 0.5rem;
+      }
+
+      .lightbox-arrow.right {
+        right: 0.5rem;
+      }
+
+      .lightbox-caption {
+        font-size: 1rem;
+      }
+    }
+
+    /* Hero Carousel */
+    .gallery-hero {
+      background: none !important;
+      overflow: hidden;
+      position: relative;
+      margin-top: -80px;   /* pulls under fixed header */
+      padding-top: 80px;   /* keeps content from hiding behind header */
+      height: 650px;
+      min-height: 650px;
+      max-height: 650px;
+    }
+
+    .hero-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400%;
+      height: 100%;
+      display: flex;
+      animation: heroSlide 12s infinite linear;
+      z-index: 1;
+    }
+
+    .hero-slide {
+      width: 25%;
+      height: 100%;
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.35); /* dark overlay for contrast */
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes heroSlide {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(0); }
+      30% { transform: translateX(-25%); }
+      55% { transform: translateX(-25%); }
+      60% { transform: translateX(-50%); }
+      85% { transform: translateX(-50%); }
+      90% { transform: translateX(-75%); }
+      100% { transform: translateX(-75%); }
+    }
+
+    /* Overlay content on hero */
+    .gallery-hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      color: #fff;
+      padding: 0 1.5rem 3rem 1.5rem;
+    }
+
+    .gallery-hero-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .gallery-hero-content .gallery-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .gallery-hero-content .btn {
+      color: #fff;
+      border-color: #fff;
+      background: transparent;
+    }
+
+    .gallery-hero-content .btn:hover {
+      background: #fff;
+      color: #5b0d1b; /* matches your burgundy-ish palette */
+    }
+
+    @media (max-width: 768px) {
+      .gallery-hero {
+        height: 50vh;
+        min-height: 320px;
+      }
+
+      .gallery-hero-content h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -16,183 +251,201 @@
         <a href="gallery.html" class="active">Gallery</a>
         <div class="dropdown-content">
           <a href="gallery.html#photos">Photos</a>
-          <a href="gallery.html#performances">Performances</a>
+          <a href="gallery.html#class-videos">Class Videos</a>
           <a href="gallery.html#choreography">Choreography</a>
         </div>
       </div>
       <a href="about.html">About</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
     </nav>
   </header>
 
-  <main class="gallery-page">
-    <h2>Gallery</h2>
-
-    <!-- Gallery Navigation -->
-    <div class="gallery-nav">
-      <a href="#photos" class="btn btn-secondary">View Photos</a>
-      <a href="#performances" class="btn btn-secondary">View Performances</a>
-      <a href="#choreography" class="btn btn-secondary">View Choreography</a>
+  <!-- HERO SECTION with overlaid text and buttons -->
+  <section class="gallery-hero">
+    <div class="hero-carousel">
+      <div class="hero-slide" style="background-image: url('Media/31.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('Media/32.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('Media/33.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('Media/31.jpeg');"></div>
     </div>
 
+    <div class="gallery-hero-content">
+      <h2>Gallery</h2>
+      <div class="gallery-nav">
+        <a href="#photos" class="btn btn-secondary">View Photos</a>
+        <a href="#class-videos" class="btn btn-secondary">View Class Videos</a>
+        <a href="#choreography" class="btn btn-secondary">View Choreography</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main gallery content (Photos, Class Videos, Choreography) -->
+  <main class="gallery-page">
     <!-- Photos Section -->
     <h3 class="videos-heading" id="photos">Photos</h3>
 
     <!-- Photos by @jaqlinmedlockphotography -->
     <div class="gallery-grid">
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(0)">
         <img src="Media/1.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(1)">
         <img src="Media/2.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(2)">
         <img src="Media/3.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(3)">
         <img src="Media/4.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(4)">
         <img src="Media/5.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(5)">
         <img src="Media/6.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(6)">
         <img src="Media/7.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(7)">
         <img src="Media/8.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(8)">
         <img src="Media/9.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(9)">
         <img src="Media/10.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(10)">
         <img src="Media/11.JPG" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @jaqlinmedlockphotography</p>
       </div>
 
       <!-- Photos by @a.bermanphotography -->
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(11)">
         <img src="Media/12.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(12)">
         <img src="Media/13.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(13)">
         <img src="Media/14.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(14)">
         <img src="Media/15.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(15)">
         <img src="Media/16.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(16)">
         <img src="Media/17.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(17)">
         <img src="Media/18.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(18)">
         <img src="Media/19.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(19)">
         <img src="Media/20.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(20)">
         <img src="Media/21.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(21)">
         <img src="Media/22.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(22)">
         <img src="Media/23.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(23)">
         <img src="Media/24.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(24)">
         <img src="Media/25.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(25)">
         <img src="Media/26.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(26)">
         <img src="Media/27.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(27)">
         <img src="Media/28.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(28)">
         <img src="Media/29.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(29)">
         <img src="Media/30.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @a.bermanphotography</p>
       </div>
 
       <!-- Photos by @leelavisuals for Kay Prescott -->
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(30)">
         <img src="Media/31.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @leelavisuals for Kay Prescott</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(31)">
         <img src="Media/32.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @leelavisuals for Kay Prescott</p>
       </div>
 
       <!-- Photo by @nisacreations for Tamisha A. Guy -->
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(32)">
         <img src="Media/33.jpeg" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @nisacreations for Tamisha A. Guy</p>
       </div>
 
       <!-- Photos by @nisacreations for Jamal White -->
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(33)">
         <img src="Media/34.JPG" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @nisacreations for Jamal White</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(34)">
         <img src="Media/35.JPG" alt="Dani Berman performing" />
         <p class="gallery-credit">Credit: @nisacreations for Jamal White</p>
       </div>
     </div>
 
-    <!-- Performances Section -->
-    <h3 class="videos-heading" id="performances">Performances</h3>
+    <!-- Class Videos Section -->
+    <h3 class="videos-heading" id="class-videos">Class Videos</h3>
 
     <div class="video-gallery">
       <div class="video-item">
@@ -274,7 +527,7 @@
         <div class="video-container">
           <iframe
             src="https://www.youtube.com/embed/3Lx7NYC6fTw"
-            title="Dani Berman choreography"
+            title="Dani Berman choreography - Scalp"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -282,19 +535,260 @@
           </iframe>
         </div>
         <p class="video-credit">Choreography: Dani Berman</p>
+        <p class="video-credit">Workshop choreography for an all girl rock band, 'Lipbomb'</p>
+      </div>
+
+      <div class="video-item">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/5GDMt7xyxro"
+            title="Dani Berman choreography - I'm Happy"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-credit">This is an original work by Dani Berman featuring a cast of 7 dancers in an emotive contemporary/jazz fusion piece. This piece tells the story of an abusive relationship and how to heal from that trauma | Debuted in November 2024.</p>
+      </div>
+
+      <div class="video-item">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/yebGiBPxAes"
+            title="Dani Berman choreography - Supermassive Black Hole"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-credit">This is an original work by Dani Berman featuring a cast of 6 dancers in a seductive Jazz piece. This work comments on the predatory male gaze upon the female body by intentionally overly sexualizing a group of fem presenting dancers | Debuted in November, 2025.</p>
       </div>
     </div>
   </main>
 
+  <section class="footer-contact">
+    <div class="footer-contact-container">
+      <h3>Get In Touch</h3>
+      <form class="footer-contact-form" id="footerContactForm">
+        <div class="footer-form-row">
+          <input type="text" name="name" placeholder="Name *" required />
+          <input type="email" name="email" placeholder="Email *" required />
+        </div>
+        <textarea name="message" placeholder="Message *" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div id="footerStatusMessage" class="footer-message"></div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Dani Berman</p>
-    <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-    </a>
+    <div class="footer-left">
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <div class="typing-container-footer">
+        <p><span class="typing-static">I'm a&nbsp;</span><span class="typing-word-container"><span class="typed-text-footer"></span><span class="cursor-footer">&nbsp;</span></span></p>
+      </div>
+      <p>© 2025 Dani Berman</p>
+    </div>
   </footer>
+
+  <script>
+    const footerForm = document.getElementById('footerContactForm');
+    const footerStatusMessage = document.getElementById('footerStatusMessage');
+
+    if (footerForm) {
+      footerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+          name: footerForm.elements.name.value,
+          email: footerForm.elements.email.value,
+          message: footerForm.elements.message.value
+        };
+
+        const submitBtn = footerForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        footerStatusMessage.className = 'footer-message';
+        footerStatusMessage.style.display = 'none';
+
+        try {
+          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            footerStatusMessage.className = 'footer-message success';
+            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+            footerStatusMessage.style.display = 'block';
+            footerForm.reset();
+          } else {
+            footerStatusMessage.className = 'footer-message error';
+            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
+            footerStatusMessage.style.display = 'block';
+          }
+        } catch (error) {
+          footerStatusMessage.className = 'footer-message error';
+          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
+          footerStatusMessage.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    }
+
+    // LIGHTBOX FUNCTIONALITY
+    const photoImages = [
+      { src: 'Media/1.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/2.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/3.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/4.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/5.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/6.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/7.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/8.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/9.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/10.jpeg', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/11.JPG', caption: 'Credit: @jaqlinmedlockphotography' },
+      { src: 'Media/12.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/13.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/14.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/15.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/16.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/17.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/18.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/19.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/20.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/21.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/22.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/23.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/24.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/25.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/26.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/27.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/28.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/29.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/30.jpeg', caption: 'Credit: @a.bermanphotography' },
+      { src: 'Media/31.jpeg', caption: 'Credit: @leelavisuals for Kay Prescott' },
+      { src: 'Media/32.jpeg', caption: 'Credit: @leelavisuals for Kay Prescott' },
+      { src: 'Media/33.jpeg', caption: 'Credit: @nisacreations for Tamisha A. Guy' },
+      { src: 'Media/34.JPG', caption: 'Credit: @nisacreations for Jamal White' },
+      { src: 'Media/35.JPG', caption: 'Credit: @nisacreations for Jamal White' }
+    ];
+
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      document.getElementById('lightbox').style.display = 'flex';
+      updateLightboxImage();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex < 0) {
+        currentImageIndex = photoImages.length - 1;
+      } else if (currentImageIndex >= photoImages.length) {
+        currentImageIndex = 0;
+      }
+      updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+      const img = document.getElementById('lightboxImage');
+      const caption = document.getElementById('lightboxCaption');
+      img.src = photoImages[currentImageIndex].src;
+      caption.textContent = `${photoImages[currentImageIndex].caption} (${currentImageIndex + 1} of ${photoImages.length})`;
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowRight') changeImage(1);
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'Escape') closeLightbox();
+      }
+    });
+
+    // Close lightbox when clicking outside image
+    document.getElementById('lightbox')?.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    // Footer Typing Effect
+    const typedTextSpan = document.querySelector('.typed-text-footer');
+    const cursor = document.querySelector('.cursor-footer');
+
+    const words = ['choreographer', 'performer', 'professional'];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newWordDelay = 2000;
+    let wordIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < words[wordIndex].length) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        setTimeout(erase, newWordDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        wordIndex++;
+        if (wordIndex >= words.length) wordIndex = 0;
+        setTimeout(type, typingDelay + 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(type, newWordDelay);
+    });
+  </script>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="lightbox-arrow left" onclick="changeImage(-1)">&#10094;</span>
+    <span class="lightbox-arrow right" onclick="changeImage(1)">&#10095;</span>
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="about-page">
   <header>
     <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
     <nav>
@@ -16,13 +16,20 @@
         <a href="gallery.html">Gallery</a>
         <div class="dropdown-content">
           <a href="gallery.html#photos">Photos</a>
-          <a href="gallery.html#performances">Performances</a>
+          <a href="gallery.html#class-videos">Class Videos</a>
           <a href="gallery.html#choreography">Choreography</a>
         </div>
       </div>
       <a href="about.html" class="active">About</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
     </nav>
   </header>
 
@@ -32,31 +39,153 @@
         <div class="statement-text">
           <h2>About Dani</h2>
           <p>
-            Dani Berman is a 21 year-old dancer located in Manhattan, NY. Most recently she has been training in dance at Marymount Manhattan College, obtaining her BFA in Dance. She is currently in her senior year. Her dance focus of study is jazz and choreography, studying with industry professionals like Sheila Barker, Katie Heinin, and Geoffrey Doig Marx. During her time at MMC, Dani has studied techniques that include, but are not limited to, ballet, Graham, O'Donnell, Nikolais, Horton, commercial/theater jazz, afrobeat, hip-hop, body percussion, contemporary, tap, west african, Lindy Hop, and improv. She loves theater, and is training for a career in the theater world. Dani supplements her education with classes at Steps on Broadway, having studied with Joshua Bergasse, Dylan Pearce, and more. In her budding career thus far, Dani has been a part of works in both the theater and concert realm. She has been in pieces by Monique Smith, Jamal White, Dolly Sfeir, Tamisha Guy, and Raja Feather Kelly. She attended the Ascend Summer Intensive, and worked with Kele Roberson, Shanees D. Kemp, and Kelly Sneddon Walker.
+            Dani Berman (she/her) is a dancer, singer and choreographer. She is located in Manhattan, NY and the DMV area. She received her BFA in Dance from Marymount Manhattan College in New York City, specializing in Jazz techniques and choreography. She has trained and performed in dance for over 20 years and has worked with industry professionals such as Thomas Ford, Joshua Bergasse, Dylan Pearce, Sheila Barker, and Geoffrey Doig-Marx. Dani has also studied various techniques outside of the Jazz realm including modern, hip-hop and its subgenres, contemporary, tap, west african, lindy hop, and improv. Dani complimented her training through college with intensives such as the Ascend Contemporary Dance Intensive, in summer of 2023. Here, she worked intimately with in demand artists such as Kele Roberson, Shanees D. Kemp, and Kelly Sneddon-Walker.
           </p>
           <p>
-            Dani debuted her first choreographic work, "I'm 'Happy'" at Marymount Manhattan's 'Dancers at Work' show in the Fall of 2024. She has created multiple works for a band in Long Island called "Lipbomb" and has begun working on two more episodic works for her senior project. She is excited to practice her choreographic skills after college.
+            Dani's heart lies in musical theater and is committed to her artistry in singing, dancing and acting. Most notably, Dani worked under Trent Soyster as dance captain in a 2021 production of Rent Jr. In her dance career thus far, Dani has been cast in theater and concert works choreographed by Monique Smith, Jamal White, Raja Feather Kelly, Dolly Sfeir, and Tamisha Guy.
           </p>
           <p>
-            When she's not in the studio, Dani loves cooking, taking care of her pup Ollie, and spending time with family and friends.
+            Dani's choreographic mind is exercised often. She loves creating new works when she is inspired by her own life. In November of 2025, Dani debuted Supermassive Black Hole, which was inspired by the feelings of fem presenting people when preyed upon by the objectifying male gaze. Dani debuted her first staged work in November of 2024 called, I'm "Happy," commenting on the impact and fallout of abusive relationships. Additionally, Dani works closely with an all female rock band, Lipbomb, based out of Long Island, New York.
+          </p>
+          <p>
+            When she's not in the studio, Dani is an avid lover of exploring through the city. She is an outgoing and compassionate young woman whose interests are writing, babysitting, cooking and seeing Broadway shows. When she's not actively working towards her goals, Dani can likely be found curled up on a bed with her 2 year old dachshund, Ollie.
           </p>
         </div>
-        <div class="statement-image">
-          <img src="Media/36.jpeg" alt="Dani Berman performing" />
+        <div class="statement-images">
+          <div class="statement-image">
+            <img src="Media/36.jpeg" alt="Dani Berman performing" />
+          </div>
+          <div class="statement-image">
+            <img src="Media/30.jpeg" alt="Dani Berman performing" />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="footer-contact">
+    <div class="footer-contact-container">
+      <h3>Get In Touch</h3>
+      <form class="footer-contact-form" id="footerContactForm">
+        <div class="footer-form-row">
+          <input type="text" name="name" placeholder="Name *" required />
+          <input type="email" name="email" placeholder="Email *" required />
+        </div>
+        <textarea name="message" placeholder="Message *" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div id="footerStatusMessage" class="footer-message"></div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Dani Berman</p>
-    <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-      </svg>
-    </a>
+    <div class="footer-left">
+      <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <div class="typing-container-footer">
+        <p><span class="typing-static">I'm a&nbsp;</span><span class="typing-word-container"><span class="typed-text-footer"></span><span class="cursor-footer">&nbsp;</span></span></p>
+      </div>
+      <p>© 2025 Dani Berman</p>
+    </div>
   </footer>
+
+  <script>
+    const footerForm = document.getElementById('footerContactForm');
+    const footerStatusMessage = document.getElementById('footerStatusMessage');
+
+    if (footerForm) {
+      footerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+          name: footerForm.elements.name.value,
+          email: footerForm.elements.email.value,
+          message: footerForm.elements.message.value
+        };
+
+        const submitBtn = footerForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        footerStatusMessage.className = 'footer-message';
+        footerStatusMessage.style.display = 'none';
+
+        try {
+          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            footerStatusMessage.className = 'footer-message success';
+            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+            footerStatusMessage.style.display = 'block';
+            footerForm.reset();
+          } else {
+            footerStatusMessage.className = 'footer-message error';
+            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
+            footerStatusMessage.style.display = 'block';
+          }
+        } catch (error) {
+          footerStatusMessage.className = 'footer-message error';
+          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
+          footerStatusMessage.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    }
+
+    // Footer Typing Effect
+    const typedTextSpan = document.querySelector('.typed-text-footer');
+    const cursor = document.querySelector('.cursor-footer');
+
+    const words = ['choreographer', 'performer', 'professional'];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newWordDelay = 2000;
+    let wordIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < words[wordIndex].length) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        setTimeout(erase, newWordDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        cursor.classList.add('typing');
+        typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursor.classList.remove('typing');
+        wordIndex++;
+        if (wordIndex >= words.length) wordIndex = 0;
+        setTimeout(type, typingDelay + 500);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(type, newWordDelay);
+    });
+  </script>
 </body>
 </html>
