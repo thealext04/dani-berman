@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Dani Berman</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #f3d0c3;
+    }
+
+    .artist-statement {
+      background: transparent;
+    }
+  </style>
 </head>
 
 <body class="about-page">
@@ -41,6 +50,17 @@
           <p>
             Dani Berman (she/her) is a dancer, singer and choreographer. She is located in Manhattan, NY and the DMV area. She received her BFA in Dance from Marymount Manhattan College in New York City, specializing in Jazz techniques and choreography. She has trained and performed in dance for over 20 years and has worked with industry professionals such as Thomas Ford, Joshua Bergasse, Dylan Pearce, Sheila Barker, and Geoffrey Doig-Marx. Dani has also studied various techniques outside of the Jazz realm including modern, hip-hop and its subgenres, contemporary, tap, west african, lindy hop, and improv. Dani complimented her training through college with intensives such as the Ascend Contemporary Dance Intensive, in summer of 2023. Here, she worked intimately with in demand artists such as Kele Roberson, Shanees D. Kemp, and Kelly Sneddon-Walker.
           </p>
+        </div>
+        <div class="statement-image">
+          <img src="Media/36.jpeg" alt="Dani Berman performing" />
+        </div>
+      </div>
+
+      <div class="statement-row">
+        <div class="statement-image">
+          <img src="Media/30.jpeg" alt="Dani Berman performing" />
+        </div>
+        <div class="statement-text">
           <p>
             Dani's heart lies in musical theater and is committed to her artistry in singing, dancing and acting. Most notably, Dani worked under Trent Soyster as dance captain in a 2021 production of Rent Jr. In her dance career thus far, Dani has been cast in theater and concert works choreographed by Monique Smith, Jamal White, Raja Feather Kelly, Dolly Sfeir, and Tamisha Guy.
           </p>
@@ -50,14 +70,6 @@
           <p>
             When she's not in the studio, Dani is an avid lover of exploring through the city. She is an outgoing and compassionate young woman whose interests are writing, babysitting, cooking and seeing Broadway shows. When she's not actively working towards her goals, Dani can likely be found curled up on a bed with her 2 year old dachshund, Ollie.
           </p>
-        </div>
-        <div class="statement-images">
-          <div class="statement-image">
-            <img src="Media/36.jpeg" alt="Dani Berman performing" />
-          </div>
-          <div class="statement-image">
-            <img src="Media/30.jpeg" alt="Dani Berman performing" />
-          </div>
         </div>
       </div>
     </div>
@@ -99,50 +111,20 @@
     const footerStatusMessage = document.getElementById('footerStatusMessage');
 
     if (footerForm) {
-      footerForm.addEventListener('submit', async (e) => {
+      footerForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const formData = {
-          name: footerForm.elements.name.value,
-          email: footerForm.elements.email.value,
-          message: footerForm.elements.message.value
-        };
+        const name = footerForm.elements.name.value;
+        const email = footerForm.elements.email.value;
+        const message = footerForm.elements.message.value;
 
-        const submitBtn = footerForm.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        footerStatusMessage.className = 'footer-message';
-        footerStatusMessage.style.display = 'none';
+        // Create mailto link
+        const subject = encodeURIComponent(`Message from ${name}`);
+        const body = encodeURIComponent(`${message}\n\n${name}`);
+        const mailtoLink = `mailto:dani_berman@outlook.com?subject=${subject}&body=${body}`;
 
-        try {
-          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            footerStatusMessage.className = 'footer-message success';
-            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            footerStatusMessage.style.display = 'block';
-            footerForm.reset();
-          } else {
-            footerStatusMessage.className = 'footer-message error';
-            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
-            footerStatusMessage.style.display = 'block';
-          }
-        } catch (error) {
-          footerStatusMessage.className = 'footer-message error';
-          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
-          footerStatusMessage.style.display = 'block';
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-        }
+        // Open mail client
+        window.location.href = mailtoLink;
       });
     }
 

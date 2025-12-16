@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dani Berman | Dancer & Choreographer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <style>
     /* Scroll Reveal Animation - Slide from Bottom */
@@ -21,8 +24,9 @@
     /* Hero Section */
     .hero {
       background-image: url('Media/dani-banner.jpg');
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
       position: relative;
       margin-top: -80px;
       padding-top: 80px;
@@ -118,9 +122,9 @@
         <div class="statement-text">
           <h2>A Note From the Artist</h2>
 
-          <p>I am a dance artist who creates work on the basis of how the body naturally moves. I like to incorporate everyday gestures into my work, exhibiting aspects of strength and emotionality. My work tends to live in a space of human emotion at its core, coming from personal experience meshed with theatrical features. Being a creative who struggles with emotional regulation, I have unique experiences surrounding the intensity of how I feel, which I incorporate into my work. More mundane feelings become physicalized and exaggerated in an attempt to make the audience feel more, and potentially make them uncomfortable. I use movement to explore and attempt to understand topics of trauma, abuse, mental illness, sexuality, joy, and peace.</p>
+          <p>I am a dance artist who creates work on the basis of how the body naturally moves. I like to incorporate everyday gestures into my work, exhibiting aspects of strength and emotionality. My work tends to live in a space of human emotion at its core, coming from personal experience intertwined with theatrical features. I am a creative who struggles with emotional regulation, myself, and I have unique experiences surrounding the intensity of how I feel. This is a jumping off point for much of the work I make. I exaggerate more mundane feelings in an attempt to make the audience feel something - maybe it resonates with them, maybe it brings up discomfort. Ultimately, I use movement to explore themes of trauma, abuse, mental illness, sexuality, joy, and peace and attempt to understand more about these topics through my creations.</p>
 
-          <p>I am interested in how our experiences – no matter how insignificant they may seem – help to shape our whole being. The human experience is so complex, and presently, it is becoming harder and harder to feel stable all the time. We are consuming so much negativity whether it's competition for employment, global death, or even coping with the decisions of the government, so much is unfair and tragic in the world. This ties into the way we process information and how we feel, which is something I am interested in itself.</p>
+          <p>As an artist, I am interested in how our experiences – no matter how insignificant they may seem – help to shape our whole being. The human experience is so complex, and presently, it is becoming more difficult to feel stable – whether it be mentally, emotionally, financially. This societal state of being makes it natural for us to overly consume negativity. I am interested in how this lifestyle affects our identities, specifically difficulties like global death, tyrannical decisions of the government, and loss of innocence.</p>
         </div>
         <div class="statement-image">
           <img src="Media/25.jpeg" alt="Dani Berman performing" />
@@ -132,13 +136,13 @@
           <img src="Media/27.jpeg" alt="Dani Berman performing" />
         </div>
         <div class="statement-text">
-          <p>My work explores emotional distress and how to cope with it. In creative processes, I utilize floorwork and trance like stares to depict moments of panic or depression. I also like to combat these elements with the idea of strength, inner peace and acceptance.</p>
+          <p>My work looks all the ideas above and uses them to explore emotional distress  and how to cope with it. In creative processes, I utilize floorwork and trance like stares to depict moments of panic or depression. Additionally, I have a background in percussive dance and playing instruments which inspire my movement phrases. I also like to combat these elements with the idea of strength, inner peace and acceptance depicted by lighter feeling jumps, human contact, or a peaceful smile.</p>
 
-          <p>I have questions about how to implement complex aspects of human existence into movement. I want to discover ways to abstract these ideas in movement that I tend to create from story, and it can become literal. Although this isn't a bad way to create, I want to stretch my creative muscles and work on conceptual ways to move.</p>
+          <p>I have questions about how to implement the endless aspects of human existence into movement. I want to discover new ways to abstract these ideas in movement. I tend to create linear tales through my work, something that is easy for an audience to follow, and it often physicalizes an event in my life. However, I want to expand my reach and learn how to make work from the same starting point and then deviate into an experimental space. I want to work with dissonant sound, multiple mediums in one work, vocal elements, and ultimately more conceptual ways to move.</p>
 
-          <p>My work is driven by music. If the movement is not connected to sound, I cannot be happy with it, as the music is my drive to create. I like to utilize different accents in the body, with tensing up and locking out limbs, small ticks and sudden level changes. Being of a small stature, I really love lower to the ground movement, especially a fast, consecutive floor sequence. I also like to see pictures and spatial relationships through the large taking of space.</p>
+          <p>Music is the main source of turning my ideas into movement, it is my drive and momentum to create. If the dance is not connected to sound, I am not satisfied. I like to utilize different accents in the body, to compliment or intentionally clash with my chosen sound score. These movements can consist of tensing up and locking out limbs, fast floorwork, small ticks and sudden level changes.</p>
 
-          <p>My work exists on the basis of disagreement. This is disagreement of personalities, concepts, countries or anything else that exists where two entities or beings oppose each other. Without disagreement, uncomfortable feelings would be infrequent, and emotional struggle would feel less overwhelming. This is embedded in our world; disagreement exists everywhere, and I think that it is necessary to begin a movement of growth.</p>
+          <p>My work exists on the basis of disagreement. This is a disagreement of personalities, concepts, countries and anything else where there is a strong opposition. Without disagreement, I would not have the opportunity to feel all of the uncomfortable feelings that inform my identity. I am a firm believer that we learn the most about ourselves when we are struggling. This idea is embedded in our lives as we are pushed to never stop doing; presently, I seem to always be in disagreement or struggle which I think is necessary to begin grounding myself in who I am as a dancer, choreographer, and person.</p>
         </div>
       </div>
     </div>
@@ -180,50 +184,20 @@
     const footerStatusMessage = document.getElementById('footerStatusMessage');
 
     if (footerForm) {
-      footerForm.addEventListener('submit', async (e) => {
+      footerForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const formData = {
-          name: footerForm.elements.name.value,
-          email: footerForm.elements.email.value,
-          message: footerForm.elements.message.value
-        };
+        const name = footerForm.elements.name.value;
+        const email = footerForm.elements.email.value;
+        const message = footerForm.elements.message.value;
 
-        const submitBtn = footerForm.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        footerStatusMessage.className = 'footer-message';
-        footerStatusMessage.style.display = 'none';
+        // Create mailto link
+        const subject = encodeURIComponent(`Message from ${name}`);
+        const body = encodeURIComponent(`${message}\n\n${name}`);
+        const mailtoLink = `mailto:dani_berman@outlook.com?subject=${subject}&body=${body}`;
 
-        try {
-          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            footerStatusMessage.className = 'footer-message success';
-            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            footerStatusMessage.style.display = 'block';
-            footerForm.reset();
-          } else {
-            footerStatusMessage.className = 'footer-message error';
-            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
-            footerStatusMessage.style.display = 'block';
-          }
-        } catch (error) {
-          footerStatusMessage.className = 'footer-message error';
-          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
-          footerStatusMessage.style.display = 'block';
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-        }
+        // Open mail client
+        window.location.href = mailtoLink;
       });
     }
 

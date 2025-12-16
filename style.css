@@ -172,6 +172,7 @@ nav a.active {
   line-height: 1.2;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
 }
 
 .hero-subtitle {
@@ -262,7 +263,7 @@ nav a.active {
 
 /* ===== Quote Feature Section ===== */
 .quote-feature {
-  background: #F3D0C3;
+  background: #f5f4e9;
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -291,7 +292,7 @@ nav a.active {
 
 /* ===== Dual Skills Section ===== */
 .dual-skills {
-  background: #EDBEE4;
+  background: #A1A8BE;
   padding: 4rem 2rem;
 }
 
@@ -352,7 +353,7 @@ nav a.active {
 
 /* ===== Artist Statement Section ===== */
 .artist-statement {
-  background: #F3D0C3;
+  background: #f5f4e9;
   padding: 4rem 2rem;
 }
 
@@ -373,6 +374,10 @@ nav a.active {
   gap: 3rem;
   align-items: flex-start;
   margin-bottom: 4rem;
+}
+
+.statement-row-reverse .statement-images {
+  align-items: flex-start;
 }
 
 .statement-row-reverse {
@@ -402,7 +407,7 @@ nav a.active {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .statement-image img {
@@ -418,7 +423,7 @@ nav a.active {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 70px); /* Full viewport height minus header */
-  background-color: #fff;
+  background-color: #5F5420;
   overflow: visible;
 }
 
@@ -428,7 +433,7 @@ nav a.active {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem;
-  background: #5F5420;
+  background: #EA785B;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -449,7 +454,7 @@ nav a.active {
   flex: 1;
   display: flex;
   overflow: hidden;
-  background: #fff;
+  background: #5F5420;
   border: 3px solid #3F0013;
   border-radius: 0;
   margin: 1rem 2rem 2rem 2rem;
@@ -560,7 +565,7 @@ nav a.active {
   flex-direction: column;
   align-items: center;
   padding: 3rem 1rem;
-  background-color: #EDBEE4;
+  background-color: #fff;
   max-width: none;
 }
 
@@ -911,7 +916,7 @@ footer p {
 
 /* ===== Footer Contact Form ===== */
 .footer-contact {
-  background: #EA785B;
+  background: #A1A8BE;
   padding: 4rem 2rem 3rem;
   border-top: 1px solid #eee;
   flex-shrink: 0;
@@ -991,6 +996,22 @@ footer p {
 /* ===== Page-Specific Styles ===== */
 .about-page .footer-contact {
   background: #5F5420;
+}
+
+.gallery-page .footer-contact {
+  background: #F3D0C3;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+}
+
+.resume-page .footer-contact {
+  background: #EA785B;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
 }
 
 /* ===== Responsive Design ===== */

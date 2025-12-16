@@ -29,11 +29,13 @@
 
     main {
       background: #fff;
+      margin-top: 0;
+      padding-top: 0;
     }
   </style>
 </head>
 
-<body>
+<body class="resume-page">
   <header>
     <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
     <nav>
@@ -119,50 +121,20 @@
     const footerStatusMessage = document.getElementById('footerStatusMessage');
 
     if (footerForm) {
-      footerForm.addEventListener('submit', async (e) => {
+      footerForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const formData = {
-          name: footerForm.elements.name.value,
-          email: footerForm.elements.email.value,
-          message: footerForm.elements.message.value
-        };
+        const name = footerForm.elements.name.value;
+        const email = footerForm.elements.email.value;
+        const message = footerForm.elements.message.value;
 
-        const submitBtn = footerForm.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        footerStatusMessage.className = 'footer-message';
-        footerStatusMessage.style.display = 'none';
+        // Create mailto link
+        const subject = encodeURIComponent(`Message from ${name}`);
+        const body = encodeURIComponent(`${message}\n\n${name}`);
+        const mailtoLink = `mailto:dani_berman@outlook.com?subject=${subject}&body=${body}`;
 
-        try {
-          const response = await fetch('https://dani-contact-backend.onrender.com/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            footerStatusMessage.className = 'footer-message success';
-            footerStatusMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            footerStatusMessage.style.display = 'block';
-            footerForm.reset();
-          } else {
-            footerStatusMessage.className = 'footer-message error';
-            footerStatusMessage.textContent = data.error || 'Something went wrong. Please try again.';
-            footerStatusMessage.style.display = 'block';
-          }
-        } catch (error) {
-          footerStatusMessage.className = 'footer-message error';
-          footerStatusMessage.textContent = 'Unable to send message. Please check your connection and try again.';
-          footerStatusMessage.style.display = 'block';
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
-        }
+        // Open mail client
+        window.location.href = mailtoLink;
       });
     }
 
