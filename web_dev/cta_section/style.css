@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    padding: 2rem 0;
+}
+
+/* ========== BASE CTA SECTION STYLES ========== */
+.cta-section {
+    position: relative;
+    padding: 5rem 2rem;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.cta-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.cta-title-small {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.cta-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+/* ========== BUTTON STYLES ========== */
+.cta-btn {
+    padding: 1.2rem 2.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* CUSTOMIZE: Primary button */
+.cta-btn.primary {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.cta-btn.primary:hover {
+    background: #5568d3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* CUSTOMIZE: Secondary button */
+.cta-btn.secondary {
+    background: transparent;
+    color: inherit;
+    border: 2px solid currentColor;
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* ========== STYLE 1: GRADIENT BACKGROUND ========== */
+.cta-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.cta-gradient .cta-btn.secondary {
+    border-color: white;
+    color: white;
+}
+
+.cta-gradient .cta-btn.secondary:hover {
+    background: white;
+    color: #667eea;
+}
+
+/* ========== STYLE 2: SPLIT WITH IMAGE BACKGROUND ========== */
+.cta-split {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* CUSTOMIZE: Replace with your background image */
+.cta-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* To use actual image:
+.cta-background {
+    background-image: url('path/to/image.jpg');
+}
+*/
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darkens image for text readability */
+    z-index: 1;
+}
+
+.cta-split .cta-btn.secondary {
+    border-color: white;
+    color: white;
+}
+
+.cta-split .cta-btn.secondary:hover {
+    background: white;
+    color: #4facfe;
+}
+
+/* ========== STYLE 3: MINIMAL WITH BORDER ========== */
+.cta-minimal {
+    background: white;
+    border: 3px solid #667eea;
+    border-radius: 15px;
+    max-width: 1000px;
+    margin: 2rem auto;
+    color: #333;
+}
+
+.cta-minimal .cta-title {
+    color: #667eea;
+}
+
+.cta-minimal .cta-btn.secondary {
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.cta-minimal .cta-btn.secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* ========== STYLE 4: COMPACT SINGLE BUTTON ========== */
+.cta-compact {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.cta-compact .cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cta-compact .cta-title-small {
+    margin-bottom: 0;
+}
+
+/* ========== STYLE 5: WITH ICON/BADGE ========== */
+.cta-badge {
+    background: #1a1a2e;
+    color: white;
+}
+
+.cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.cta-badge .cta-btn.secondary {
+    border-color: white;
+    color: white;
+}
+
+.cta-badge .cta-btn.secondary:hover {
+    background: white;
+    color: #1a1a2e;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    .cta-title-small {
+        font-size: 1.3rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        gap: 1rem;
+    }
+
+    .cta-compact .cta-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cta-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-title {
+        font-size: 1.8rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

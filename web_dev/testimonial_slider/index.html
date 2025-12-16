@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+        <h2>What People Say</h2>
+        <p class="section-subtitle">Hear from directors, choreographers & collaborators</p>
+
+        <div class="testimonial-slider">
+            <!-- Testimonial Container (slides horizontally) -->
+            <div class="testimonial-track" id="testimonialTrack">
+
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Sarah brought incredible energy and precision to every performance.
+                        Her dedication to the craft and ability to adapt quickly made her an
+                        invaluable member of our production."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="author-initial">JD</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">John Davis</h4>
+                            <p class="author-title">Broadway Director</p>
+                            <p class="author-company">Hamilton National Tour</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Working with Sarah was an absolute pleasure. Her technical skill
+                        combined with her artistic interpretation elevated our entire show.
+                        I'd hire her again in a heartbeat."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="author-initial">MR</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Maria Rodriguez</h4>
+                            <p class="author-title">Choreographer</p>
+                            <p class="author-company">Music Video Productions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "A true professional who brings passion and creativity to every project.
+                        Sarah's ability to connect with the audience through movement is
+                        remarkable and sets her apart from the rest."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span class="author-initial">TC</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Thomas Chen</h4>
+                            <p class="author-title">Artistic Director</p>
+                            <p class="author-company">Contemporary Dance Company</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Sarah's work ethic and talent are unmatched. She consistently delivers
+                        powerful performances while maintaining professionalism both on and off
+                        stage. A dream to work with!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <span class="author-initial">LB</span>
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Lisa Brown</h4>
+                            <p class="author-title">Producer</p>
+                            <p class="author-company">West End Productions</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="slider-arrow left" onclick="changeTestimonial(-1)">
+                <span>&#10094;</span>
+            </button>
+            <button class="slider-arrow right" onclick="changeTestimonial(1)">
+                <span>&#10095;</span>
+            </button>
+
+            <!-- Navigation Dots -->
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <script>
+        const track = document.getElementById('testimonialTrack');
+        const dotsContainer = document.getElementById('sliderDots');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        let currentIndex = 0;
+        let autoplayInterval;
+
+        // Create navigation dots
+        testimonials.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.onclick = () => goToTestimonial(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Change testimonial
+        function changeTestimonial(direction) {
+            currentIndex += direction;
+
+            // Loop around
+            if (currentIndex < 0) {
+                currentIndex = testimonials.length - 1;
+            } else if (currentIndex >= testimonials.length) {
+                currentIndex = 0;
+            }
+
+            updateSlider();
+            resetAutoplay();
+        }
+
+        // Go to specific testimonial
+        function goToTestimonial(index) {
+            currentIndex = index;
+            updateSlider();
+            resetAutoplay();
+        }
+
+        // Update slider position and active dot
+        function updateSlider() {
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Autoplay functionality
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                changeTestimonial(1);
+            }, 5000); // Change every 5 seconds
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        // Pause autoplay on hover
+        const slider = document.querySelector('.testimonial-slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            startAutoplay();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') changeTestimonial(1);
+            if (e.key === 'ArrowLeft') changeTestimonial(-1);
+        });
+
+        // Start autoplay on load
+        startAutoplay();
+    </script>
+</body>
+</html>

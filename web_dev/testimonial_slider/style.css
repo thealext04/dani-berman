@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* ========== TESTIMONIALS SECTION ========== */
+.testimonials-section {
+    max-width: 900px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.testimonials-section h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* ========== SLIDER CONTAINER ========== */
+.testimonial-slider {
+    position: relative;
+    overflow: hidden;
+    background: white;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== TESTIMONIAL TRACK ========== */
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Will be multiplied by number of testimonials */
+}
+
+/* ========== TESTIMONIAL CARDS ========== */
+.testimonial-card {
+    min-width: 100%; /* Each card takes full width */
+    padding: 2rem;
+    color: #333;
+}
+
+/* CUSTOMIZE: Quote icon */
+.quote-icon {
+    font-size: 5rem;
+    color: #667eea;
+    font-family: Georgia, serif;
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+/* CUSTOMIZE: Testimonial text */
+.testimonial-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #555;
+    font-style: italic;
+    min-height: 150px; /* Keeps consistent height across testimonials */
+}
+
+/* ========== AUTHOR INFO ========== */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Author image/avatar */
+.author-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* To use actual photos instead of gradients:
+   Replace background gradient with:
+   background-image: url('path/to/photo.jpg');
+   background-size: cover;
+   background-position: center;
+*/
+
+.author-initial {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.author-title {
+    font-size: 1rem;
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.author-company {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* ========== NAVIGATION ARROWS ========== */
+/* CUSTOMIZE: Arrow button styles */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(102, 126, 234, 0.1);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slider-arrow:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow span {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.slider-arrow.left {
+    left: 1rem;
+}
+
+.slider-arrow.right {
+    right: 1rem;
+}
+
+/* ========== NAVIGATION DOTS ========== */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: #bbb;
+    transform: scale(1.2);
+}
+
+/* CUSTOMIZE: Active dot color */
+.dot.active {
+    background: #667eea;
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .testimonials-section h2 {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .testimonial-slider {
+        padding: 2rem 1rem;
+    }
+
+    .testimonial-text {
+        font-size: 1.1rem;
+        min-height: auto;
+    }
+
+    .quote-icon {
+        font-size: 3rem;
+    }
+
+    .testimonial-author {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .author-info {
+        text-align: center;
+    }
+
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .slider-arrow span {
+        font-size: 1.2rem;
+    }
+
+    .slider-arrow.left {
+        left: 0.5rem;
+    }
+
+    .slider-arrow.right {
+        right: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        padding: 1rem;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .author-name {
+        font-size: 1rem;
+    }
+
+    .author-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .author-initial {
+        font-size: 1.2rem;
+    }
+}

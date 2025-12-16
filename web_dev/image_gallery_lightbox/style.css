@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    padding: 4rem 2rem;
+}
+
+/* ========== GALLERY SECTION ========== */
+.gallery-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.gallery-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* ========== GALLERY GRID ========== */
+/* CUSTOMIZE: Change grid columns (auto-fit will adjust) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Image container - REPLACE background with actual images */
+.gallery-image {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+/* To use actual images instead of gradients:
+   Add this style to gallery-image div:
+   style="background-image: url('path/to/image.jpg');"
+*/
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+/* ========== GALLERY OVERLAY ========== */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* CUSTOMIZE: Plus icon size and color */
+.view-icon {
+    font-size: 4rem;
+    color: white;
+    font-weight: 300;
+}
+
+/* ========== LIGHTBOX MODAL ========== */
+.lightbox {
+    display: none; /* Hidden by default, shown via JavaScript */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Close button (X) */
+.close-lightbox {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.close-lightbox:hover {
+    color: #ccc;
+}
+
+/* Navigation arrows */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    user-select: none;
+    transition: background 0.3s ease;
+    z-index: 1001;
+}
+
+.lightbox-arrow:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-arrow.left {
+    left: 2rem;
+}
+
+.lightbox-arrow.right {
+    right: 2rem;
+}
+
+/* Lightbox content */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Main lightbox image */
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Image caption */
+.lightbox-caption {
+    color: white;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .gallery-section h2 {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .gallery-image {
+        height: 250px;
+    }
+
+    .close-lightbox {
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2.5rem;
+    }
+
+    .lightbox-arrow {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .lightbox-arrow.left {
+        left: 0.5rem;
+    }
+
+    .lightbox-arrow.right {
+        right: 0.5rem;
+    }
+
+    .lightbox-caption {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-section {
+        padding: 2rem 1rem;
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Hero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- VIDEO HERO SECTION -->
+    <section class="video-hero">
+        <!-- Background Video -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <!-- Replace with your video file -->
+            <source src="your-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Gradient Overlay (adjust opacity in CSS) -->
+        <div class="video-overlay"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">Sarah Martinez</h1>
+            <p class="hero-subtitle">Commercial Jazz Dancer | Choreographer</p>
+            <p class="hero-tagline">Available for Broadway, Tours & Music Videos</p>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Book Me</a>
+                <a href="#reel" class="btn btn-secondary">Watch Reel</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator (optional) -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <script>
+        // Fallback: If video fails to load, add fallback class
+        const video = document.querySelector('.hero-video');
+        video.addEventListener('error', function() {
+            document.querySelector('.video-hero').classList.add('video-fallback');
+        });
+    </script>
+</body>
+</html>
