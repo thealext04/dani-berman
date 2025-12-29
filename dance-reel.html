@@ -3,39 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume | Dani Berman</title>
-  <link rel="stylesheet" href="style.css?v=7" />
+  <title>Dance Reel | Dani Berman</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Ensure proper height for resume display */
-    .resume-split-container {
-      height: calc(100vh - 180px);
-      max-height: none;
+    body {
+      background-color: #A1A8BE;
     }
 
-    .pdf-embed {
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .pdf-embed iframe {
-      height: 100%;
-    }
-
-    body.resume-page {
-      background: #fff;
-      margin: 0;
+    .dance-reel-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       padding: 0;
+      margin: 0;
+      min-height: calc(100vh - 80px);
     }
 
-    main {
-      background: #fff;
-      margin-top: 80px;
-      padding-top: 0;
+    .dance-reel-header {
+      padding: 2rem;
+      text-align: center;
+      background-color: #A1A8BE;
+    }
+
+    .dance-reel-header h2 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #3F0013;
+    }
+
+    .dance-reel-video {
+      flex: 1;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      position: relative;
+      background: #000;
+    }
+
+    .dance-reel-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .dance-reel-header {
+        padding: 1.5rem 1rem;
+      }
+
+      .dance-reel-header h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 
-<body class="resume-page">
+<body class="dance-reel-page">
   <header>
     <h1 class="logo"><a href="index.html">Dani Berman</a></h1>
     <nav>
@@ -48,9 +73,9 @@
           <a href="gallery.html#choreography">Choreography</a>
         </div>
       </div>
-      <a href="dance-reel.html">Dance Reel</a>
+      <a href="dance-reel.html" class="active">Dance Reel</a>
       <a href="about.html">About</a>
-      <a href="resume.html" class="active">Resume</a>
+      <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
       <a href="https://www.instagram.com/daniiberman" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,44 +87,21 @@
     </nav>
   </header>
 
-  <main class="resume-page-fullscreen">
-    <div class="resume-header-compact">
-      <h2>Resume & Headshot</h2>
-      <div class="download-buttons">
-        <a href="Dani Berman Resume.pdf" download="Dani Berman Resume.pdf" class="btn btn-primary btn-small">Download Resume</a>
-        <a href="dani-berman-headshot.jpeg" download="dani-berman-headshot.jpeg" class="btn btn-primary btn-small">Download Headshot</a>
-      </div>
+  <main class="dance-reel-container">
+    <div class="dance-reel-header">
+      <h2>Dance Reel</h2>
     </div>
-
-    <div class="resume-split-container">
-      <div class="resume-split-left">
-        <div class="resume-image-container">
-          <img src="dani-berman-resume.jpeg" alt="Dani Berman Resume" />
-        </div>
-      </div>
-
-      <div class="resume-split-right">
-        <div class="headshot-container">
-          <img src="dani-berman-headshot.jpeg" alt="Dani Berman Headshot" />
-        </div>
-      </div>
+    <div class="dance-reel-video">
+      <iframe
+        src="https://www.youtube.com/embed/O0npNtlGktg"
+        title="Dani Berman Dance Reel"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
     </div>
   </main>
-
-  <section class="footer-contact">
-    <div class="footer-contact-container">
-      <h3>Get In Touch</h3>
-      <form class="footer-contact-form" id="footerContactForm">
-        <div class="footer-form-row">
-          <input type="text" name="name" placeholder="Name *" required />
-          <input type="email" name="email" placeholder="Email *" required />
-        </div>
-        <textarea name="message" placeholder="Message *" required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-      <div id="footerStatusMessage" class="footer-message"></div>
-    </div>
-  </section>
 
   <footer>
     <div class="footer-left">
@@ -118,27 +120,6 @@
   </footer>
 
   <script>
-    const footerForm = document.getElementById('footerContactForm');
-    const footerStatusMessage = document.getElementById('footerStatusMessage');
-
-    if (footerForm) {
-      footerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = footerForm.elements.name.value;
-        const email = footerForm.elements.email.value;
-        const message = footerForm.elements.message.value;
-
-        // Create mailto link
-        const subject = encodeURIComponent(`Message from ${name}`);
-        const body = encodeURIComponent(`${message}\n\n${name}`);
-        const mailtoLink = `mailto:dani_berman@outlook.com?subject=${subject}&body=${body}`;
-
-        // Open mail client
-        window.location.href = mailtoLink;
-      });
-    }
-
     // Footer Typing Effect
     const typedTextSpan = document.querySelector('.typed-text-footer');
     const cursor = document.querySelector('.cursor-footer');
